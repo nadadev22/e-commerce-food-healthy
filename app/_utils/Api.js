@@ -85,25 +85,25 @@ const createOrder = (data, jwt) =>
     },
   });
 
-const myOrders = (userId, jwt) =>
-  axiosGlobal
-    .get(
-      "/orders?[userId][$eq]=" +
-        userId +
-        "&[populate][orderItemList][populate][product][populate]=image"
-    )
-    .then((resp) => {
-      const response = resp.data.data;
-      console.log("Orders Data:", response);
-      const orderList = response.map((item, index) => ({
-        id: item.id,
-        totalOrderAmount: item.totalOrderAmount,
-        orderItemList: item.orderItemList,
-        createdAt: item.createdAt,
-      }));
+// const myOrders = (userId, jwt) =>
+//   axiosGlobal
+//     .get(
+//       "/orders?[userId][$eq]=" +
+//         userId +
+//         "&[populate][orderItemList][populate][product][populate]=image"
+//     )
+//     .then((resp) => {
+//       const response = resp.data.data;
+//       console.log("Orders Data:", response);
+//       const orderList = response.map((item, index) => ({
+//         id: item.id,
+//         totalOrderAmount: item.totalOrderAmount,
+//         orderItemList: item.orderItemList,
+//         createdAt: item.createdAt,
+//       }));
 
-      return orderList;
-    });
+//       return orderList;
+//     });
 
 export default {
   getCategory,
@@ -116,5 +116,5 @@ export default {
   addToCart,
   getCartItems,
   createOrder,
-  myOrders,
+  // myOrders,
 };
